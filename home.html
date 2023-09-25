@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en" class=''>
+<head>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" in
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styling.css')}}">
+    <script src="https://kit.fontawesome.com/f75621122b.js"></script>
+    <script src="//maxcdn.bootstrap.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+    <meta charset="UTF-8">
+    <title> {{ title }}</title>
+</head>
+<body>
+<div class="container tall">
+    <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active">
+           <label class="radiobtn">
+               <input type="radio" name="options" id="option1" autocomplete="off" checked>
+               <div class="icon"></div>
+           </label>
+        <a href="#tab1" role="tab" data-toggle="tab">
+            Image Captioning
+        </a>
+        </li>
+       <li role="presentation">
+          <label class="radiobtn">
+              <input type="radio" name="options" id="option2" autocomplete="off" checked>
+              <div class="icon"></div>
+          </label>
+        <a href="#tab2" role="tab" data-toggle="tab">
+            Sentiment Analysis
+        </a>
+       </li>
+      <li role="presentation">
+        <label class="radiation">
+            <input type="radio" name="options" id="option3" autocomplete="off" checked>
+            <div class="icon"></div>
+        </label>
+          <a href="#tab3" role="tab" data-toggle="tab">Sentiment Analysis Of Image </a>
+      </li>
+      <li role="presentation">
+        <label class="radiobtn">
+            <input type="radio" name="options" id="option4" autocomplete="off" checked>
+            <div class="icon"></div>
+        </label>
+          <a href="#tab4" role="tab" data-toggle="tab">Object Detection </a>
+      </li>
+      <li role="presentation">
+        <label class="radiobtn">
+            <input type="radio" name="options" id="option5" autocomplete="off" checked>
+            <div class="icon"></div>
+        </label>
+          <a href="#tab5" role="tab" data-toggle="tab">Customer Lifetime Value </a>
+      </li>
+      <li role="presentation">
+        <label class="radiobtn">
+            <input type="radio" name="options" id="option6" autocomplete="off" checked>
+            <div class="icon"></div>
+        </label>
+          <a href="#tab6" role="tab" data-toggle="tab">Recommendation</a>
+      </li>
+      <li role="presentation">
+        <label class="radiobtn">
+            <input type="radio" name="options" id="option7" autocomplete="off" checked>
+            <div class="icon"></div>
+        </label>
+          <a href="#tab7" role="tab" data-toggle="tab">Social Media Branding </a>
+      </li>
+    </ul>
+
+
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="tab1">
+            <div class="row">
+        <div class="col-sm-12">
+            <h2>Upload Image To See The Caption</h2>
+        </div>
+        </div>
+       <div class="row">
+           <div class="col-md-6">
+
+               <div class="container">
+                   <div class="row">
+                       <div class="col-md-6">
+                           <form method="post" action="#" id="#">
+                               <div class="form-group files color">
+                                   <label>Upload Your File </label>
+                                   <input type="file" class="form-control" multiple="">
+                               </div>
+                           </form>
+                       </div>
+                   </div>
+               </div>
+
+           </div>
+
+           <div class="col-md-6">
+               <div class="alert alert primary" role="alert">
+                   This Is A Primary Alert-Check It Out!
+               </div>
+           </div>
+
+       </div>
+    </div>
+
+    </div>
+</div>
+
+  <div role="tabpanel" class="tab-pane" id="tab2">
+      <div class="row">
+  <div class="col-lg-12">
+      <h2>Enter The Text To Get The Sentiment </h2>
+  </div>
+      </div>
+
+  <div class="row">
+
+      <div class="col-md-6">
+          <div class="input-group">
+              <span class="input-group-addon">Enter Text Here</span>
+              <form action="/sentiment_analysis_prediction" method="post" enctype="multipart/form-data">
+              <input name="text" class="form-control" placeholder="Text">
+              <input type="submit">
+              </form>
+          </div>
+      </div>
+
+      <div class="col-md-3">
+          <h1>Sentiment</h1>
+          <div class="alert alert-primary" role="alert">
+              {% if probability %}
+                {{ sentiment }}
+                 {% endif %}
+          </div>
+      </div>
+
+      <div class="col-md-3">
+          <h1>Probability</h1>
+          <div class="alert alert-primary" role="alert">
+              {% if probability %}
+                {{ probability }}
+                 {% endif %}
+          </div>
+      </div>
+
+      <div class="col-sm-6"></div>
+        {% if probability %}
+          <div class="col-sm-2"><h1>Emotion</h1>
+          <img src="{{ image }}" alt="Image">
+        {% endif %}
+          </div>
+  </div>
+  </div>
+
+
+
+</body>
+</html>
+
+
+
+
+
+
